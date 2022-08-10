@@ -92,7 +92,13 @@ class TemplatedUrlFactory(private val templates: UrlTemplates) : UrlFactory {
             return template.replace("\\{line-block:start}.+\\{line-block:end}".toRegex(), "")
         }
 
-        return template
+        var processed = template
+        if (lineSelection.start == lineSelection.end) {
+            processed =  processed
+                .replace("\\{line-end-block:start}.+\\{line-end-block:end}".toRegex(), "")
+        }
+
+        return processed
             .replace("{line:start}", lineSelection.start.toString())
             .replace("{line:end}", lineSelection.end.toString())
     }

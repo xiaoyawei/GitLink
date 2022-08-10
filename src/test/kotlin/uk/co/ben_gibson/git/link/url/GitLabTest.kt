@@ -29,12 +29,20 @@ class GitLabTest {
                 "https://gitlab.com/my/repo/blob/master/src/Foo.java#L10-20"
             ),
             Arguments.of(
+                UrlOptionsFileAtBranch(REMOTE_BASE_URL, FILE, BRANCH, LineSelection(15, 15)),
+                "https://gitlab.com/my/repo/blob/master/src/Foo.java#L15"
+            ),
+            Arguments.of(
                 UrlOptionsFileAtBranch(REMOTE_BASE_URL, FILE, BRANCH),
                 "https://gitlab.com/my/repo/blob/master/src/Foo.java"
             ),
             Arguments.of(
                 UrlOptionsFileAtCommit(REMOTE_BASE_URL, FILE, COMMIT, LineSelection(10, 20)),
                 "https://gitlab.com/my/repo/blob/b032a0707beac9a2f24b1b7d97ee4f7156de182c/src/Foo.java#L10-20"
+            ),
+            Arguments.of(
+                UrlOptionsFileAtCommit(REMOTE_BASE_URL, FILE, COMMIT, LineSelection(15, 15)),
+                "https://gitlab.com/my/repo/blob/b032a0707beac9a2f24b1b7d97ee4f7156de182c/src/Foo.java#L15"
             ),
             Arguments.of(
                 UrlOptionsFileAtBranch(
